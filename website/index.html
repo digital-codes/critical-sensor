@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html  lang="de">
+
+<head>
+  <meta charset="UTF-8">
+  <meta lang="de">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Andreas Kugel">
+  <meta name="description" content="template">
+  <title>Critical Zones - Sensing the Orchard</title>
+
+    <link rel="stylesheet" type="text/css" href="css/w3.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="css/c3.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="css/custom.css" rel="stylesheet">
+
+    <!-- Load d3.js and c3.js -->
+    <!--
+    <script src="https://d3js.org/d3.v5.min.js" charset="utf-8"></script>
+    -->
+    <script src="js/w3.js"></script>
+    <script src="js/d3-v5.min.js"></script>
+    <script src="js/c3.min.js"></script>
+
+    <script src="js/custom.js"></script>
+
+    <!--
+    <style>
+      .c3-region-1 {
+        fill: #dd3333;
+        fill-opacity: 0.8
+      }
+    </style>
+    -->
+  </head>
+  <body onload="init()">
+
+    <div id="framing">
+        <div id="langswitch">
+              <button class="w3-button w3-xlarge lang-de" onclick="toEnglish()">EN</button>
+              <button class="w3-button w3-xlarge lang-en w3-hide" onclick="toGerman()">DE</button>
+        </div>
+
+        <div id="headline">
+          <h1 class="lang-de">
+              <!--
+              Live-Data from the Orchard
+              -->
+              Lebenszeichen von der Streuobstwiese
+          </h1>
+          <h1 class="lang-en w3-hide">
+              <!--
+              Live-Data from the Orchard
+              -->
+              Live-data from the orchard
+          </h1>
+             <h2 id="latest">
+                {{date}}
+            </h2>
+        </div>
+        <div id="banner">
+            <div class="row">
+                <div class="column">
+                <!-- video works ...
+                <video class="video" controlslist="nodownload" oncontextmenu="return false" src="https://zkm.de/media/video/i6848_20_XXX_E_VX_AB_Baumschnittkurs_Impressionen_V3_360p.mp4" preload="none" poster="https://zkm.de/media/video/img/baumschnittkurs_standbild001.jpg" controls="controls">
+                </video>
+                -->
+                </div>
+                <div class="column">
+                    <img src="img/banner.png">
+                </div>
+                <div class="column">
+                </div>
+            </div>
+
+        </div>
+        <div id="content">
+
+            <!-- info -->
+            <div class="row">
+                <div id="wiese" class="column">
+                    <div id="wcaption">
+                        <div class="w3-hide w3-animate-fading wcaption" w3-repeat="wiesen">{{date}}</div>
+                    </div>
+                    <div id="wfigure">
+                        <img class="w3-hide w3-animate-fading wimage" w3-repeat="wiesen" src="{{url}}" >
+
+                    <!-- put slideshow images here -->
+                        <!--
+                    <img class="wiese w3-animate-fading" src="img/20200818.jpg">
+                    <img class="wiese w3-animate-fading" src="img/20200919.jpg">
+                    <img class="wiese w3-animate-fading" src="img/20200928.jpg">
+                    <img class="wiese w3-animate-fading" src="img/20201003.jpg">
+                    <img class="wiese w3-animate-fading" src="img/20201010.jpg">
+                        -->
+                    </div>
+                </div>
+
+                <div id="info" class="column scroll">
+                  <p class="scroll lang-de">
+Die Wiese lebt in der Ausstellung. Nicht ganz - Aber wir haben Verbindung!<br>
+
+Temperatur, Luftfeuchtigkeit, Luftdruck, Helligkeit und CO2 werden stündlich gemessen
+und hier sichtbar gemacht. Signalstärke und Batterieladung zeigen
+den Zustand der Beobachtungsstation.
+<br>
+Daten und Code sind für alle verfügbar.
+
+                  </p>
+                  <p class="scroll lang-en w3-hide">
+The orchard is part of the exhibition. Well, not quite. But we have the link!<br>
+
+Temperatur, humidity, air pressure, brightness and CO2 concentration are measured hourly and on display at this place.
+Wireless signal-strength and battery charge level indicate the condition of our observatory.
+<br>
+Data and code of the project are available freely.
+
+                  </p>
+                </div>
+
+                <div id="sensor" class="column">
+                    <!-- put slideshow images here -->
+                    <img class="sensor w3-animate-fading" src="img/controller.jpg">
+                    <img class="sensor w3-animate-fading" src="img/setup.jpg">
+                    <img class="sensor w3-animate-fading" src="img/boxOnStage.jpg">
+                </div>
+            </div>
+
+            <!-- separator -->
+            <div class="row">
+                <div class="separator">
+                </div>
+            </div>
+
+            <!-- data -->
+            <div id="charts" >
+                <a name="charts"></a>
+                <div class="row">
+                    <div id="c1" class="column data">
+                    </div>
+                    <div id="c2" class="column data">
+                    </div>
+                    <div id="c3" class="column data">
+                    </div>
+                </div>
+                <div class="row">
+                    <div id="c4" class="column data">
+                    </div>
+                    <div id="c5" class="column data">
+                    </div>
+                    <div id="c6" class="column data">
+                    </div>
+                </div>
+                <div class="row">
+                    <div id="c7" class="column data">
+                    </div>
+                    <div id="c8" class="column data">
+                    </div>
+                    <div id="c9" class="column data">
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div id="footer">
+            <p>
+                Made by: <a href="https://www.zkm.de" target=_blank>ZKM</a>,
+                <a href="https://ok-lab-karlsruhe.de" target=_blank>OK Lab Karlsruhe</a>
+            </p>
+            <p>
+                Credits: bla bla bla
+            </p>
+        </div>
+
+    </div>
+
+
+  </body>
+</html>
