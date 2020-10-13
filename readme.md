@@ -1,2 +1,2 @@
-# Critcal Zones Sensor Project
+# Critical Zones Sensor Project
 
