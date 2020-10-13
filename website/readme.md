@@ -1,5 +1,6 @@
 # Sensor Website
 Current version: [live](https://iot.a-kugel.de/sensor.html)  (will change)
+
 Live data [json url:](https://iot.a-kugel.de/srv.php)  (will change too, following live version)
 
 ## Credits 
