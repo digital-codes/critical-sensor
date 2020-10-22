@@ -1,0 +1,11 @@
+// device id, sensor type ... device specific
+#ifndef DEVICESPEC_H
+#define  DEVICESPEC_H
+
+//#define DEVICE_ID  1    // set for each sensor
+
+// select sensor
+//#define SENSOR_TYPE SENS_EE894
+
+
+#endif //  DEVICESPEC_H
