@@ -164,6 +164,7 @@ function updateLabels() {
 			chartList[c].chart.data.names({Sensor2: sensorLabels.en[2]})
 			chartList[c].chart.data.names({Sensor3: sensorLabels.en[3]})
 			chartList[c].chart.data.names({Sensor4: sensorLabels.en[4]})
+
 		} else {
 			chartList[c].chart.data.names({Sensor0: sensorLabels.de[0]})
 			chartList[c].chart.data.names({Sensor1: sensorLabels.de[1]})
@@ -363,7 +364,7 @@ function toGerman() {
     w3.addClass('.lang-en','w3-hide')
     w3.removeClass('.lang-de','w3-hide')
 	english = false 
-	updateLabels()
+	setTimeout(updateLabels,50)
 /*
  <button onclick="w3.addClass('.lang-en','w3-hide')">Add Class</button> 
 */
@@ -373,7 +374,7 @@ function toEnglish() {
     w3.addClass('.lang-de','w3-hide')
     w3.removeClass('.lang-en','w3-hide')
 	english = true 
-	updateLabels()
+	setTimeout(updateLabels,50)
 }
 
 
