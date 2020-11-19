@@ -115,6 +115,10 @@ bold {
 	font-weight: bold;
 }
 
+ul {
+	margin: 0;
+}
+
 #framing {
     background-color: rgba(250,250,250,.7);
 	width: 96%;
