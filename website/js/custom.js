@@ -9,6 +9,14 @@ const reloadIntervall = 10*60*1000
 //const reloadIntervall = 10*1000
 var latestDate = ""
 
+var english = false
+
+// chart array for langiage switch
+var chartList = Array()
+
+const sensorLabels = {"de":["Referenz","Wiese1","Wiese2","Büro","ZKM innen","ZKM außen"],
+"en":["Reference","Orchard1","Orchard2","Office","ZKM indoor","ZKM outdoor"]}
+
 // ---------------
 
 /* ------- repeat ------ 
@@ -55,6 +63,8 @@ function init() {
 
     w3.getHttpObject("srv.php", processData);
 
+	if (english) toEnglish()
+
     setTimeout(reloadPage,reloadIntervall);
 
 }
@@ -71,14 +81,97 @@ function processData(rawData) {
     latestDate = rawData[rawData.length - 1].date
     console.log("Latest: ",latestDate)
     w3.displayObject("latest", {"date":"Update: " + latestDate});
+	w3.addClass("#updating","w3-hide")
+	w3.removeClass("#latest","w3-hide")
     //var charts = ["c1","c2","c3","c4","c5","c6","c7","c8","c9"]
-    var charts = ["c1","c2","c3","c4","c5","c8","c9"]
+    var charts = ["c1","c2","c3","c4","c5","c7","c8"]
     var lbls = ["CO2 [ppm]","Temp [°C]","Hum [%]","Pres [mb]","Light [%]","RSSI [dB]","Bat [%]"] // key must be lower case
     charts.forEach((function(k,i) { // not working with . atrribute
         console.log("Chart for ",k)
         displayData(rawData,"#"+k,lbls[i])
     }))
 
+    setTimeout(resizeCharts,1000);
+
+}
+
+// map axis labels
+function mapLabels(l) {
+	console.log("Map label: ",l)
+	var lblIn = l.split(" ")[0]
+	var lblRem = l.split(" ")[1]
+	var lblOut = lblIn
+	if (english) {
+		switch (lblIn) {
+			case "Hum":
+				lblOut = "Humidity"
+				break;
+			case "Temp":
+				lblOut = "Temperature"
+				break;
+			case "Pres":
+				lblOut = "Pressure"
+				break;
+			case "Bat":
+				lblOut = "Battery"
+				break;
+
+		}
+	} else {
+		switch (lblIn) {
+			case "Hum":
+				lblOut = "Luftfeuchtigkeit"
+				break;
+			case "Temp":
+				lblOut = "Temperatur"
+				break;
+			case "Pres":
+				lblOut = "Luftdruck"
+				break;
+			case "Bat":
+				lblOut = "Batterie"
+				break;
+			case "Light":
+				lblOut = "Helligkeit"
+				break;
+			case "RSSI":
+				lblOut = "Funksignal"
+				break;
+
+		}
+	}
+	
+	return lblOut + " " + lblRem;
+}
+
+// update chart labels to new language
+function updateLabels() {
+	for (var c in chartList) {
+		var lbl = chartList[c].lbl
+		chartList[c].chart.axis.labels({y: mapLabels(lbl)})
+		// test:
+		// works: chartList[c].chart.data.names({Sensor0: 'XYZ'})
+		// works too:
+		/*
+		if (english)
+			chartList[c].chart.data.names({Sensor0: 'XYZ'})
+		else
+			chartList[c].chart.data.names({Sensor0: 'ABC'})
+		*/
+		if (english){
+			chartList[c].chart.data.names({Sensor0: sensorLabels.en[0]})
+			chartList[c].chart.data.names({Sensor1: sensorLabels.en[1]})
+			chartList[c].chart.data.names({Sensor2: sensorLabels.en[2]})
+			chartList[c].chart.data.names({Sensor3: sensorLabels.en[3]})
+			chartList[c].chart.data.names({Sensor4: sensorLabels.en[4]})
+		} else {
+			chartList[c].chart.data.names({Sensor0: sensorLabels.de[0]})
+			chartList[c].chart.data.names({Sensor1: sensorLabels.de[1]})
+			chartList[c].chart.data.names({Sensor2: sensorLabels.de[2]})
+			chartList[c].chart.data.names({Sensor3: sensorLabels.de[3]})
+			chartList[c].chart.data.names({Sensor4: sensorLabels.de[4]})
+        }
+    }
 }
 
 
@@ -139,7 +232,7 @@ function displayData(rawData,sel,lbl) {
         type: 'timeseries',
         tick: {
           count: 4,
-          format: "%Y-%m-%d %H"
+          format: "%Y-%m-%d %H:%M"
         },
         label: {
           text: "Date",
@@ -149,7 +242,7 @@ function displayData(rawData,sel,lbl) {
        
       y: {
         label: {
-          text: lbl,
+          text: mapLabels(lbl),
           position: 'middle'
         }
       }
@@ -162,10 +255,31 @@ function displayData(rawData,sel,lbl) {
         type: 'step'
       }
     },
+    // zoom works, but seems to use a lot of processing power
+    zoom: {
+        enabled: true
+    }
 
   });
+  // add chart and label to list
+  chartList.push({"chart":chart,"lbl":lbl,"id":sel.replace("#","")})
 
   setTimeout(chart.resize,1000);
+
+}
+
+// update chart divs to image size
+function resizeCharts() {
+  // get size of splom element and set all other heights the same
+  //var splomHeight = document.getElementById('splom').clientHeight;
+  var splomHeight = document.getElementById('splom').clientHeight + 15;
+  for (var c in chartList) {
+    var ch = chartList[c]
+    //console.log("Set ",ch.id," to ",splomHeight)
+    document.getElementById(ch.id).setAttribute("style","height:"+splomHeight+"px; position: relative;");
+    setTimeout(ch.chart.resize,200)
+  }
+  setTimeout(updateLabels,100);
 
 }
 
@@ -248,6 +362,8 @@ function w3_close() {
 function toGerman() {
     w3.addClass('.lang-en','w3-hide')
     w3.removeClass('.lang-de','w3-hide')
+	english = false 
+	updateLabels()
 /*
  <button onclick="w3.addClass('.lang-en','w3-hide')">Add Class</button> 
 */
@@ -256,7 +372,8 @@ function toGerman() {
 function toEnglish() {
     w3.addClass('.lang-de','w3-hide')
     w3.removeClass('.lang-en','w3-hide')
+	english = true 
+	updateLabels()
 }
-
 
 
