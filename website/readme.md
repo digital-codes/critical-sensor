@@ -3,6 +3,18 @@ Current version: [live](https://critical-sensors.de/)
 
 Live data [json url](https://critical-sensors.de/srv.php) 
 
+You may filter by filter via parameter *sens=#id*. Yuo may also just get the latest record via parameter *last=1*
+
+Sensor ids: 
+  0: Reference 
+  1: Orchard 
+  2: Orchard 
+  3: Office
+  4: ZKM
+  5: ZKM
+  
+Not all sensors are in use all the time
+
 ## Credits 
   * [ZKM](https://zkm.de/de)
   * [OK Lab Karlsruhe](https://ok-lab-karlsruhe.de/)
