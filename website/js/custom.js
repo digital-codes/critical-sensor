@@ -14,8 +14,8 @@ var english = false
 // chart array for langiage switch
 var chartList = Array()
 
-const sensorLabels = {"de":["Referenz","Wiese1","Wiese2","Büro","ZKM innen","ZKM außen"],
-"en":["Reference","Orchard1","Orchard2","Office","ZKM indoor","ZKM outdoor"]}
+const sensorLabels = {"de":["Referenz","Wiese1","Wiese2","Büro","ZKM1","ZKM2"],
+"en":["Reference","Orchard1","Orchard2","Office","ZKM1","ZKM2"]}
 
 // ---------------
 
@@ -91,7 +91,7 @@ function processData(rawData) {
         displayData(rawData,"#"+k,lbls[i])
     }))
 
-    setTimeout(resizeCharts,1000);
+    //setTimeout(resizeCharts,300) //1000);
 
 }
 
@@ -145,36 +145,49 @@ function mapLabels(l) {
 }
 
 // update chart labels to new language
-function updateLabels() {
-	for (var c in chartList) {
-		var lbl = chartList[c].lbl
-		chartList[c].chart.axis.labels({y: mapLabels(lbl)})
-		// test:
-		// works: chartList[c].chart.data.names({Sensor0: 'XYZ'})
-		// works too:
-		/*
-		if (english)
-			chartList[c].chart.data.names({Sensor0: 'XYZ'})
-		else
-			chartList[c].chart.data.names({Sensor0: 'ABC'})
-		*/
-		if (english){
-			chartList[c].chart.data.names({Sensor0: sensorLabels.en[0]})
-			chartList[c].chart.data.names({Sensor1: sensorLabels.en[1]})
-			chartList[c].chart.data.names({Sensor2: sensorLabels.en[2]})
-			chartList[c].chart.data.names({Sensor3: sensorLabels.en[3]})
-			chartList[c].chart.data.names({Sensor4: sensorLabels.en[4]})
+function updateLabels(id) {
+  console.log("Update labels for", id)
+  for (var c in chartList) {
+    if (id.replace("#","") == chartList[c].id) {
 
-		} else {
-			chartList[c].chart.data.names({Sensor0: sensorLabels.de[0]})
-			chartList[c].chart.data.names({Sensor1: sensorLabels.de[1]})
-			chartList[c].chart.data.names({Sensor2: sensorLabels.de[2]})
-			chartList[c].chart.data.names({Sensor3: sensorLabels.de[3]})
-			chartList[c].chart.data.names({Sensor4: sensorLabels.de[4]})
-        }
+      var lbl = chartList[c].lbl
+      chartList[c].chart.axis.labels({y: mapLabels(lbl)})
+      // test:
+      // works: chartList[c].chart.data.names({Sensor0: 'XYZ'})
+      // works too:
+      /*
+      if (english)
+        chartList[c].chart.data.names({Sensor0: 'XYZ'})
+      else
+        chartList[c].chart.data.names({Sensor0: 'ABC'})
+      */
+      if (english){
+        chartList[c].chart.data.names({Sensor0: sensorLabels.en[0]})
+        chartList[c].chart.data.names({Sensor1: sensorLabels.en[1]})
+        chartList[c].chart.data.names({Sensor2: sensorLabels.en[2]})
+        chartList[c].chart.data.names({Sensor3: sensorLabels.en[3]})
+        chartList[c].chart.data.names({Sensor4: sensorLabels.en[4]})
+        chartList[c].chart.data.names({Sensor5: sensorLabels.en[5]})
+
+      } else {
+        chartList[c].chart.data.names({Sensor0: sensorLabels.de[0]})
+        chartList[c].chart.data.names({Sensor1: sensorLabels.de[1]})
+        chartList[c].chart.data.names({Sensor2: sensorLabels.de[2]})
+        chartList[c].chart.data.names({Sensor3: sensorLabels.de[3]})
+        chartList[c].chart.data.names({Sensor4: sensorLabels.de[4]})
+        chartList[c].chart.data.names({Sensor5: sensorLabels.de[5]})
+       }
+       setTimeout(chartList[c].chart.resize,200)
+      }
     }
 }
 
+// update all chart labels to new language
+function updateAllLabels() {
+	for (var c in chartList) {
+    updateLabels(chartList[c].id)
+    }
+}
 
 
 // test script, bind to selector sel
@@ -265,12 +278,30 @@ function displayData(rawData,sel,lbl) {
   // add chart and label to list
   chartList.push({"chart":chart,"lbl":lbl,"id":sel.replace("#","")})
 
-  setTimeout(chart.resize,1000);
+  setSize(sel)
+
+
+  //setTimeout(chart.resize,1000);
 
 }
 
+// set chart size
+function setSize(id) {
+  id = id.replace("#","")
+  console.log("Set size for ",id)
+  // get size of splom element and set all other heights the same
+  //var splomHeight = document.getElementById('splom').clientHeight;
+  var splomHeight = document.getElementById('splom').clientHeight + 15;
+  console.log("Set ",id," to ",splomHeight)
+  document.getElementById(id).setAttribute("style","height:"+splomHeight+"px; position: relative;");
+  //setTimeout(updateLabels(id),100);
+  updateLabels(id) // also does resize
+
+}
+/*
 // update chart divs to image size
 function resizeCharts() {
+  console.log("Resize")
   // get size of splom element and set all other heights the same
   //var splomHeight = document.getElementById('splom').clientHeight;
   var splomHeight = document.getElementById('splom').clientHeight + 15;
@@ -283,7 +314,7 @@ function resizeCharts() {
   setTimeout(updateLabels,100);
 
 }
-
+*/
 
 function carousel(base,slideIndex) {
   var i;
@@ -364,7 +395,7 @@ function toGerman() {
     w3.addClass('.lang-en','w3-hide')
     w3.removeClass('.lang-de','w3-hide')
 	english = false 
-	setTimeout(updateLabels,50)
+	setTimeout(updateAllLabels,50)
 /*
  <button onclick="w3.addClass('.lang-en','w3-hide')">Add Class</button> 
 */
@@ -374,7 +405,7 @@ function toEnglish() {
     w3.addClass('.lang-de','w3-hide')
     w3.removeClass('.lang-en','w3-hide')
 	english = true 
-	setTimeout(updateLabels,50)
+	setTimeout(updateAllLabels,50)
 }
 
 

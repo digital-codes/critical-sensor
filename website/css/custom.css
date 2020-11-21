@@ -119,6 +119,13 @@ ul {
 	margin: 0;
 }
 
+/* default video display is inline-block
+this add an additional bottom space
+use flex or block, without inline */
+video {
+    display: block;
+}
+
 #framing {
     background-color: rgba(250,250,250,.7);
 	width: 96%;
