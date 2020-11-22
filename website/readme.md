@@ -3,7 +3,9 @@ Current version: [live](https://critical-sensors.de/)
 
 Live data [json url](https://critical-sensors.de/srv.php) 
 
-You may filter via parameter *sens=#id*. Yuo may also just get the latest record via parameter *last=1*
+You may filter via parameter *sens=#id*. You may also just get the latest record via parameter *last=1*
+In addition, you may specify the number period by *days=#number_of_days*. The default period will probably be set to something around 14 days, 
+to limit of processing requirements for the interactive charts.
 
 Sensor ids: 
 
