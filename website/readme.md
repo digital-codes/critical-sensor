@@ -21,9 +21,12 @@ Sensor ids:
   
   5: ZKM
 
-[Example](https://critical-sensors.de/srv.php?sens=3&last=1) latest record from the office
+[Example](https://critical-sensors.de/srv.php?sens=3&last=1) "https://critical-sensors.de/srv.php?sens=3&last=1" latest record from the office 
   
 Not all sensors are in use all the time
+
+The website might not display all data since Oct 1st,2020, due to processing limitation. 
+However, all data can be retrieved via the JSON API.
 
 ## Credits 
   * [ZKM](https://zkm.de/de)

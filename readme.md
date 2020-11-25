@@ -17,6 +17,7 @@
  * Gateway server, Python, update database with new sensor data
  * Data server, PHP, serving data for website and users
  * Website, HTML, Javascript
+   * More infos at website [readme](https://github.com/digital-codes/critical-sensor/blob/master/website/readme.md)
  * Tools, Python for CO2 spiral video and scatterplot matrix
  
  
