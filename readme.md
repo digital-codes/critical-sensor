@@ -20,7 +20,7 @@
 
 * Birdhouse style housing, wood or 3D printed
 
-  ![Housing](https://raw.githubusercontent.com/digital-codes/critical-sensor/master/assets/birdhouse-3d.jpg)
+  ![Housing](https://raw.githubusercontent.com/digital-codes/critical-sensor/master/assets/birdhouse-3d.png)
 
  ### Gateway
   * ESP32 based LoRa Module [TTGO](http://www.lilygo.cn/prod_view.aspx?TypeId=50003&Id=1134&FId=t3:50003:3)
