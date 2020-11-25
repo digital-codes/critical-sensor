@@ -3,14 +3,22 @@
 ## Hardware components
 ### Sensor Unit
   ![Controller](https://raw.githubusercontent.com/digital-codes/critical-sensor/master/assets/controller-site.jpg)
+  
  * M5Stack [ESP32 MicroController](https://docs.m5stack.com/#/en/core/gray)
+ 
   ![C-bottom](https://raw.githubusercontent.com/digital-codes/critical-sensor/master/assets/controller-bottom.jpg)
+  
  * M5Stack [LoRa 868 Module](https://docs.m5stack.com/#/en/module/lora868)
+ 
   ![Lora](https://raw.githubusercontent.com/digital-codes/critical-sensor/master/assets/lora-bottom.jpg)
+
  * M5Stack [Light Sensor](https://docs.m5stack.com/#/en/unit/light)
+ 
  * EplusE C02-Temerpeature-Humidity-Pressure Sensor [EE894](http://downloads.epluse.com/fileadmin/data/product/ee894/datasheet_EE894.pdf)
+ 
   ![EE894](https://raw.githubusercontent.com/digital-codes/critical-sensor/master/assets/ee894.jpg)
- * Birdhouse style housing, wood or 3D printed
+
+* Birdhouse style housing, wood or 3D printed
  
  ### Gateway
   * ESP32 based LoRa Module [TTGO](http://www.lilygo.cn/prod_view.aspx?TypeId=50003&Id=1134&FId=t3:50003:3)
