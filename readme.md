@@ -13,9 +13,12 @@
   * Cellular modem based upon [SIM800L](https://www.simcom.com/product/SIM800.html)
   
 ## Software Components
+ * Sensor Software, C++ Arduino based
  * Gateway server, Python, update database with new sensor data
  * Data server, PHP, serving data for website and users
- * Website
+ * Website, HTML, Javascript
+ * Tools, Python for CO2 spiral video and scatterplot matrix
+ 
  
 
  
