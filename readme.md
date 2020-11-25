@@ -15,5 +15,8 @@
 ## Software Components
  * Gateway server, Python, update database with new sensor data
  * Data server, PHP, serving data for website and users
+ * Website
+ 
+
  
  
