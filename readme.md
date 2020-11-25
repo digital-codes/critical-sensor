@@ -2,7 +2,7 @@
 
 ## Hardware components
 ### Sensor Unit
-  ![Controller](https://raw.githubusercontent.com/digital-codes/critical-sensor/master/assets/controller-site.jpg)
+  ![Controller](https://raw.githubusercontent.com/digital-codes/critical-sensor/master/assets/controller-side.jpg)
   
  * M5Stack [ESP32 MicroController](https://docs.m5stack.com/#/en/core/gray)
  
