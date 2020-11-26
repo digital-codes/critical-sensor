@@ -14,9 +14,15 @@
 
  * M5Stack [Light Sensor](https://docs.m5stack.com/#/en/unit/light)
  
+  ![Light](https://raw.githubusercontent.com/digital-codes/critical-sensor/master/assets/lightSensor.jpg)
+
  * EplusE C02-Temerpeature-Humidity-Pressure Sensor [EE894](http://downloads.epluse.com/fileadmin/data/product/ee894/datasheet_EE894.pdf)
  
   ![EE894](https://raw.githubusercontent.com/digital-codes/critical-sensor/master/assets/ee894.jpg)
+
+ * Solar [Power Bank](https://www.pearl.de/a-PX2957-1420.shtml) or similar
+ 
+  ![Power](https://raw.githubusercontent.com/digital-codes/critical-sensor/master/assets/powerBank.jpg)
 
 * Birdhouse style housing, wood or 3D printed
 
