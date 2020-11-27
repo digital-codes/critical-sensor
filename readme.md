@@ -39,7 +39,7 @@
  * Gateway server, Python, update database with new sensor data 
  * Data server, PHP, serving data for website and users 
  * Website, HTML, Javascript 
-   * [Live)(https://critical-sensors.de/) 
+   * [Live](https://critical-sensors.de/) 
    * More infos at website [readme](https://github.com/digital-codes/critical-sensor/blob/master/website/readme.md) 
  * Tools, Python for CO2 spiral video, download of reference data and scatterplot matrix 
  
