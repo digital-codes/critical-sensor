@@ -29,16 +29,18 @@
   ![Housing](https://raw.githubusercontent.com/digital-codes/critical-sensor/master/assets/birdhouse-3d.png)
 
  ### Gateway
-  * ESP32 based LoRa Module [TTGO](http://www.lilygo.cn/prod_view.aspx?TypeId=50003&Id=1134&FId=t3:50003:3)
-  * Cellular modem based upon [SIM800L](https://www.simcom.com/product/SIM800.html)
+   ![Gateway](https://raw.githubusercontent.com/digital-codes/critical-sensor/master/assets/gateway.jpg)
+
+  * ESP32 based LoRa Module [TTGO](http://www.lilygo.cn/prod_view.aspx?TypeId=50003&Id=1134&FId=t3:50003:3) 
+  * Cellular modem based upon [SIM800L](https://www.simcom.com/product/SIM800.html) 
   
 ## Software Components
- * Sensor Software, C++ Arduino based
- * Gateway server, Python, update database with new sensor data
- * Data server, PHP, serving data for website and users
- * Website, HTML, Javascript
-   * More infos at website [readme](https://github.com/digital-codes/critical-sensor/blob/master/website/readme.md)
- * Tools, Python for CO2 spiral video, download of reference data and scatterplot matrix
+ * Sensor Software, C++ Arduino based 
+ * Gateway server, Python, update database with new sensor data 
+ * Data server, PHP, serving data for website and users 
+ * Website, HTML, Javascript 
+   * More infos at website [readme](https://github.com/digital-codes/critical-sensor/blob/master/website/readme.md) 
+ * Tools, Python for CO2 spiral video, download of reference data and scatterplot matrix 
  
  
 
