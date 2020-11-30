@@ -36,10 +36,11 @@ Sensor ids:
 
 To download all data, use something like [https://critical-sensors.de/srv.php?days=500](https://critical-sensors.de/srv.php?days=500)
 
+The website might not display all data since Oct 1st,2020, due to processing limitation. 
+
 Please note, not all sensors are in use all the time
 
-The website might not display all data since Oct 1st,2020, due to processing limitation. 
-However, all data can be retrieved via the JSON API.
+
 
 ## Credits 
   * [ZKM](https://zkm.de/de)
