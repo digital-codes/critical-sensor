@@ -1,4 +1,4 @@
-# Critical Sensor Project
+# Critical-Sensors Project
 
 ## Hardware components
 ### Sensor Unit
