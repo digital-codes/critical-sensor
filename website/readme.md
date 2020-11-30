@@ -3,9 +3,9 @@ Current version: [live](https://critical-sensors.de/)
 
 Live data [json url](https://critical-sensors.de/srv.php) 
 
-You may filter via parameter *sens=#id*. You may also just get the latest record via parameter *last=1*
-In addition, you may specify the number period by *days=#number_of_days*. The default period will probably be set to something around 14 days, 
-to limit of processing requirements for the interactive charts.
+You may filter via parameter *sens=#id*. 
+You may specify the period by *days=#number_of_days*. The default period is 14 days, 
+to limit of processing requirements for the interactive charts. Setting days to zero gives you just the latest item.
 
 Sensor ids: 
 
@@ -21,8 +21,25 @@ Sensor ids:
   
   5: ZKM
 
-[Example](https://critical-sensors.de/srv.php?sens=3&last=1) "https://critical-sensors.de/srv.php?sens=3&last=1" latest record from the office 
-  
+[Example](https://critical-sensors.de/srv.php?sens=3&days=0) "https://critical-sensors.de/srv.php?sens=3&days=0" latest record from the office 
+
+```
+[{"id":"3",
+"req":"1",
+"count":"20",
+"co2":"501",
+"bat":"75",
+"pres":"0",
+"hum":"27",
+"temp":"24.37",
+"light":"85",
+"rssi":"-256",
+"date":"2020-11-30 09:19:34",
+"pkt":"1647",
+"rep":"0"}]
+```
+
+
 Not all sensors are in use all the time
 
 The website might not display all data since Oct 1st,2020, due to processing limitation. 
