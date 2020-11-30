@@ -36,7 +36,7 @@ Sensor ids:
 
 To download all data, use something like [https://critical-sensors.de/srv.php?days=500](https://critical-sensors.de/srv.php?days=500)
 
-The website might not display all data since Oct 1st,2020, due to processing limitation. 
+The website might not display all data since Oct 1st,2020, due to processing limitations. 
 
 Please note, not all sensors are in use all the time
 
