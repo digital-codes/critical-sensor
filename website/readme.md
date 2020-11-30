@@ -5,21 +5,16 @@ Live data [json url](https://critical-sensors.de/srv.php)
 
 You may filter via parameter *sens=#id*. 
 You may specify the period by *days=#number_of_days*. The default period is 14 days, 
-to limit of processing requirements for the interactive charts. Setting days to zero gives you just the latest item.
+to limit processing requirements for the interactive charts. Setting days to zero gives you just the latest item.
 
 Sensor ids: 
 
-  0: Reference 
-  
-  1: Orchard 
- 
-  2: Orchard 
-  
-  3: Office
-  
-  4: ZKM
-  
-  5: ZKM
+  * 0: Reference 
+  * 1: Orchard 
+  * 2: Orchard 
+  * 3: Office
+  * 4: ZKM
+  * 5: ZKM
 
 [Example](https://critical-sensors.de/srv.php?sens=3&days=0) "https://critical-sensors.de/srv.php?sens=3&days=0" latest record from the office 
 
