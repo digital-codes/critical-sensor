@@ -1,4 +1,12 @@
 # Critical-Sensors Project
+## Intro
+Critical-Sensors creates a link between the exhibition space and its natural environment. Corresponding to the artistic project of Stéphane Verlet-Bottéro (Notes Towards a Permacircular Museum, https://critical-zones.zkm.de/#!/detail:notes-towards-a-permacirular-museum), different sensors were installed in the natural environment of the ZKM. They record environmental data, which are visualized on a website. Weekly pictures display changes over time. Further sensors are installed in the exhibition space and elsewhere. All sensor data are freely available for further analysis.
+
+The corresponding hardware and software is documented in this repository, togethere with data snapshots. Live data can be obtained from the web service
+
+
+## Data Display
+Fundamentals are explained in the [Website Readme]((https://github.com/digital-codes/critical-sensor/blob/master/website/readme.md)
 
 ## Hardware components
 ### Sensor Unit
@@ -40,7 +48,6 @@
  * Data server, PHP, serving data for website and users 
  * Website, HTML, Javascript 
    * [Live](https://critical-sensors.de/) 
-   * More infos at website [readme](https://github.com/digital-codes/critical-sensor/blob/master/website/readme.md) 
  * Tools, Python for CO2 spiral video, download of reference data and scatterplot matrix 
  
  
